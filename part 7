@@ -1,0 +1,22 @@
+KM=[0,0;0,0];KO=[0,1,0;0,0,1];
+AO=AOO-LL*AMO-BO*KO;
+BOO=AOM-LL*AMM;
+a1=-10;a2=-15;a3=-20;
+ 
+syms h1 h2 h3 v1 v2 v3 v4 v5 v6
+H1=[1;h1;0];
+H2=[0;1;h2];
+H3=[h3;0;1];
+V1=[v1;1];
+V2=[v3;0];
+V3=[v5;1];
+ 
+[h1,v1]=solve(H1==inv(a1*eye(3)-AO)*BOO*V1);
+[h2,v3]=solve(H2==inv(a2*eye(3)-AO)*BOO*V2);
+[h3,v5]=solve(H3==inv(a3*eye(3)-AO)*BOO*V3)
+ 
+h1=double(h1);h2=double(h2);h3=double(h3);
+H=[1,0,h3;h1,1,0;0,h2,1];
+V=[V1,V2,V3];
+ 
+f=-[-56.27,-9.56,5.8;1,0,1]*inv([1,0,-0.128;5.49,1,0;0,1.52,1])
