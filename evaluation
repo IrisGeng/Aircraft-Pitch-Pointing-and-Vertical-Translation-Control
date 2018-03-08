@@ -1,0 +1,118 @@
+syms s
+A=[-1.3,0.98,0,-0.165,-0.248;42.81,-0.785,0,-17.3,-1.58;1.25,0.007,0,0.165,0.248;0,0,0,-18,0;0,0,0,0,-18];
+B=[0,0;0,0;0,0;18,0;0,18];
+C=[0,1,0,0,0;46.5,-0.256,0,-4.25,4.15;0,0,1,0,0];
+CC=[0,1,0,0,0;46.5,-0.256,0,-4.25,4.15];
+D=[0,0;0,0;0,0];
+DD=[0,0;0,0];
+ 
+% max-min sigular value for first trial
+figure(1)
+subplot(2,2,1)
+C=ss(A-B*F,B,CC,DD)
+GG=tf(C)
+sigma(GG)
+title('maximum-minimum singular value for C(s)')
+subplot(2,2,2)
+SS=eye(2)-GG;
+sigma(SS)
+title('maximum-minimum singular value for S(s)')
+subplot(2,2,3)
+TS=inv(inv(C)-eye(2));
+sigma(TS)
+title('maximum-minimum singular value for T(s)')
+ 
+% for second trial
+subplot(2,2,1)
+C=ss(A-B*F,B,CC,DD)
+GG=tf(C)
+sigma(GG)
+title('maximum-minimum singular value for C(s)')
+subplot(2,2,2)
+SS=eye(2)-GG;
+sigma(SS)
+title('maximum-minimum singular value for S(s)')
+subplot(2,2,3)
+TS=inv(inv(C)-eye(2));
+sigma(TS)
+title('maximum-minimum singular value for T(s)')
+ 
+ 
+ 
+ 
+% for third trial
+figure(3)
+subplot(2,2,1)
+C=ss(A-B*F,B,CC,DD)
+GG=tf(C)
+GG=GG*K
+sigma(GG)
+title('maximum-minimum singular value for C(s)')
+subplot(2,2,2)
+SS=eye(2)-GG;
+sigma(SS)
+title('maximum-minimum singular value for S(s)')
+subplot(2,2,3)
+TS=inv(inv(C)-eye(2));
+sigma(TS)
+title('maximum-minimum singular value for T(s)')
+ 
+ 
+% for fourth trial
+figure(4)
+subplot(2,2,1)
+C=ss(A-B*F,B,CC,DD)
+GG=tf(C)
+GG=GG*K
+sigma(GG)
+title('maximum-minimum singular value for C(s)')
+subplot(2,2,2)
+SS=eye(2)-GG;
+sigma(SS)
+title('maximum-minimum singular value for S(s)')
+subplot(2,2,3)
+TS=inv(inv(C)-eye(2));
+sigma(TS)
+title('maximum-minimum singular value for T(s)')
+ 
+% for part 5
+figure(5)
+AN=[-1.3,0.98,0,-0.165,0;42.81,-0.785,0,-17.3,0;1.25,0.007,0,0.165,0;0,0,0,-18,0;0,0,0,0,0];
+BN=[0,0;0,0;0,0;18,0;0,0];
+CN=[0,1,0,0,0;46.5,-0.256,0,-4.25,0];
+DN=[0,0;0,0];
+subplot(2,2,1)
+C=ss(AN-BN*FN,BN,CN,DN)
+GG=tf(C)
+sigma(GG)
+title('maximum-minimum singular value for C(s)')
+subplot(2,2,2)
+SS=eye(2)-GG;
+sigma(SS)
+title('maximum-minimum singular value for S(s)')
+subplot(2,2,3)
+TS=inv(inv(C)-eye(2));
+sigma(TS)
+title('maximum-minimum singular value for T(s)')
+
+% for part 7
+figure(6)
+AO=AOO-LL*AMO-BO*KO;
+BOO=AOM-LL*AMM;
+COO=[0,1,0;0,0,1];
+DOO=[0,0;0,0];
+subplot(2,2,1)
+C=ss(AO-BOO*f,BO,COO,DOO)
+GG=tf(C)
+sigma(GG)
+title('maximum-minimum singular value for C(s)')
+subplot(2,2,2)
+SS=eye(2)-GG;
+sigma(SS)
+title('maximum-minimum singular value for S(s)')
+subplot(2,2,3)
+TS=inv(inv(C)-eye(2));
+sigma(TS)
+title('maximum-minimum singular value for T(s)')
+ 
+
